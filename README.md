@@ -1,7 +1,5 @@
 # docker-zookeeper-client
 
-FROM [openjdk:8-jre-alpine](https://github.com/docker-library/openjdk/blob/master/8-jre/Dockerfile)
-
 ## Build
 
 ```console
@@ -16,10 +14,10 @@ References:
 
 ## Run
 
-Find the IP address of `eth0` network inteface.
+Find the IP address of host running ZooKeeper.  Example:
 
 ```console
-ETH0=$(/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
+ZOOKEEPER_HOST=$(/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 ```
 
 Connect to zookeeper service over `eth0` network interface.
@@ -30,7 +28,7 @@ sudo docker run \
     --tty \
     --name zookeeper-client \
     dockter/zookeeper-client:0.1 \
-        -server ${ETH0}:2181
+        -server ${ZOOKEEPER_HOST}:2181
 ```
 
 References:
@@ -56,6 +54,11 @@ References:
 
 - [docker login](https://docs.docker.com/edge/engine/reference/commandline/login/)
 - [docker push](https://docs.docker.com/edge/engine/reference/commandline/push/)
+
+
+## Technical details
+
+FROM [openjdk:8-jre-alpine](https://github.com/docker-library/openjdk/blob/master/8-jre/Dockerfile)
 
 
 ## References
