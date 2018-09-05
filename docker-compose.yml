@@ -6,6 +6,8 @@ services:
             - '2181:2181'
     zookeeper-client:
         image: 'dockter/zookeeper-client:0.1'
-        command: "-server ${ZOOKEEPER_HOST}:2181"
+        stdin_open: true
+        tty: true
+        command: ["-server", "${ZOOKEEPER_HOST}:2181"]
         depends_on:
             - 'zookeeper'

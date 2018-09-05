@@ -14,6 +14,24 @@ References:
 
 ## Run
 
+```console
+sudo docker-compose up
+```
+
+Find
+
+```console
+sudo docker-compose ps
+```
+
+```console
+sudo docker attach XXXXX
+```
+
+
+
+## Run
+
 Find the IP address of host running ZooKeeper.  Example:
 
 ```console
